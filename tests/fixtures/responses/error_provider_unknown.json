@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "PROVIDER_RESULT_UNKNOWN",
+    "retryable": false,
+    "stage": "tts_generating",
+    "job_id": "job_example_001"
+  }
+}

@@ -1,0 +1,11 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# 实施计划 5.2/M1：16MB 标称 Flash。MVP 先线刷（factory 单槽），
+# OTA 双槽在链接体积统计完成后另行评审，不在未经统计前固定 ota_0/ota_1。
+# nvs: NVS（Wi-Fi、设备 ID/令牌、产品设置、拍摄序号分配器）
+# factory: 固件 + 嵌入式静态资源与字库
+# （剩余空间暂保留；升级方案冻结后规划 OTA 槽或资产分区）
+# 2026-10-16：与实机分区表对齐为 10M（v0.2 增加界面素材/字体，原 6M 构建检查余量不足）。
+# 0xC00000 起的 2MB 未分区区域被 c6ota 用作 C6 协处理器镜像暂存区。
+nvs,      data, nvs,     0x9000,  24K,
+phy_init, data, phy,     0xf000,  4K,
+factory,  app,  factory, 0x10000, 10M,

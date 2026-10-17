@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "CONTENT_REJECTED",
+    "retryable": false,
+    "stage": "understanding",
+    "job_id": "job_example_001"
+  }
+}

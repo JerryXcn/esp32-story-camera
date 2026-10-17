@@ -1,0 +1,47 @@
+menu "Story Camera"
+
+    config STORY_SERVER_BASE_URL
+        string "Story backend base URL (HTTPS)"
+        default "https://storybox.example.com"
+        help
+            设备经 HTTPS 访问的后端地址（https://主机:端口）。证书校验永远开启。
+            也可以在设备"设置 → 服务器"里随时修改（保存在 NVS）。
+
+    config STORY_CONSENT_VERSION
+        int "First-use upload consent version"
+        default 1
+        help
+            首次联网说明文案版本；家长确认后写入 NVS。
+
+    config STORY_DEV_TOKEN
+        string "Device token (32 hex chars; empty = random, see README pairing)"
+        default ""
+        help
+            设备访问后端时使用的令牌。自建后端时在这里填 32 位十六进制令牌，
+            服务端 SC_DEVICE_TOKENS 填同一个值：SC_DEVICE_TOKENS=<token>:<device_id>。
+            仅在设备首次启动（NVS 里还没有令牌）时写入；留空则随机生成且不输出，
+            无法与自建后端配对。生成令牌：python3 -c "import secrets;print(secrets.token_hex(16))"
+
+    config STORY_CAMERA_ROTATION
+        int "Camera image rotation (degrees counter-clockwise: 0/90/180/270)"
+        default 270
+        help
+            摄像头模组安装方向校正：传感器原始画面逆时针旋转该角度后用于预览、原图、缩略图。
+            本板 OV5647 模组侧装，实测需逆时针 270 度（2026-10-16 现场确认方向正确）。
+            旋转 90/270 时 1280x960 帧转为 960x1280，居中裁 3:2 → 原图 960x640。
+
+    config STORY_CAMERA_MIRROR
+        bool "Mirror camera image horizontally (after rotation)"
+        default n
+        help
+            旋转后再左右镜像。本板不需要（开启会左右颠倒，2026-10-16 现场确认）。
+
+    config STORY_DEBUG_SILENT
+        bool "Silent debug build (speaker amplifier forced off)"
+        default n
+        help
+            调试专用：功放使能脚常拉低、codec DAC 静音、跳过开机提示音；
+            解码与播放计时照常运行，可用日志/样本数验证播放流程。
+            公共场合调试时打开；发布构建必须关闭。
+
+endmenu

@@ -1,0 +1,23 @@
+# 故事机后端（uvicorn，仅监听本机；对外 HTTPS 由 nginx 38800 端口终止）
+[Unit]
+Description=Story camera backend (FastAPI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=storybox
+Group=storybox
+WorkingDirectory=/opt/storybox/server
+EnvironmentFile=/etc/storybox/storybox.env
+# 单进程：任务队列、SQLite 与媒体文件都在进程内管理
+ExecStart=/opt/storybox/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 38801 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/storybox
+
+[Install]
+WantedBy=multi-user.target

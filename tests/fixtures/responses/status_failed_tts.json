@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "job_id": "job_example_001",
+  "operation_id": "22222222222222222222222222222222",
+  "status": "failed",
+  "stage": "tts_generating",
+  "attempt": 1,
+  "revision": 4,
+  "poll_after_ms": 2000,
+  "error": {
+    "code": "TTS_FAILED",
+    "retryable": true,
+    "stage": "tts_generating",
+    "job_id": "job_example_001"
+  },
+  "expires_at": "2026-09-13T08:00:00Z"
+}

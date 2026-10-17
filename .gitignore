@@ -1,0 +1,36 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS / editor
+.DS_Store
+.vscode/
+
+# ESP-IDF: build outputs, managed components (pinned by dependencies.lock),
+# local sdkconfig (generated from sdkconfig.defaults)
+firmware/build/
+firmware/managed_components/
+firmware/sdkconfig
+firmware/sdkconfig.old
+# Optional local dev CA for a self-signed backend (server/scripts/gen_dev_certs.sh)
+firmware/components/api_client/server_ca.pem
+
+# Server: runtime data, logs, secrets and locally generated certificates
+server/data/
+server/*.log
+server/.env.local
+server/dev-token.env
+server/*.key
+server/*.pem
+server/*.csr
+server/*.srl
+server/san.cnf
+
+# Generated test fixtures (tests/fixtures/make_fixtures.py) and host-test output
+tests/fixtures/images/oversized.jpg
+firmware/tests/host/out/
+
+# Release artifacts
+dist/

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "operation_id": "22222222222222222222222222222222",
+  "job_id": "job_example_001",
+  "status": "queued",
+  "stage": "queued",
+  "attempt": 1,
+  "revision": 1,
+  "poll_after_ms": 2000,
+  "error": null,
+  "expires_at": null
+}

@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "IDEMPOTENCY_CONFLICT",
+    "retryable": false,
+    "stage": null,
+    "job_id": "job_example_001"
+  }
+}

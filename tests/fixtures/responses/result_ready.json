@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "job_id": "job_example_001",
+  "operation_id": "22222222222222222222222222222222",
+  "title": "勇敢的小兔子",
+  "story": "小兔子沿着森林小路，遇到了正在找朋友的小熊。",
+  "audio": {
+    "path": "/v1/jobs/job_example_001/audio",
+    "format": "mp3",
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "bit_rate_bps": 64000,
+    "duration_ms": 118000,
+    "bytes": 944000,
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "expires_at": "2026-09-13T08:00:00Z"
+}

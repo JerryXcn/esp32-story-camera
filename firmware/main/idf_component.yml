@@ -1,0 +1,18 @@
+## IDF 组件依赖
+## 相机栈锁定为 eco2 兼容组合（芯片 rev v1.3 不支持 RISC-V Zba/Zbb/Zbs 位操作扩展）：
+## esp_ipa 2.3.0（esp_video 2.4.x 默认）的预编译库含 sh2add 等 bitmanip 指令，
+## ISP 初始化即 Illegal instruction。选用 esp_video 2.3.0 + esp_ipa 2.2.0~1：
+## 既无 bitmanip 指令，又包含 esp_video_cam.c 的完整 sensor 曝光/增益控制路径
+## （V4L2_CID_GAIN / V4L2_CID_EXPOSURE -> esp_cam_sensor_set_para_value），
+## 自动曝光 AGC 才能真正写入传感器。
+dependencies:
+  idf: ">=5.4"
+  lvgl/lvgl: "~9.2"
+  espressif/esp_wifi_remote: "*"
+  espressif/esp_video: "==2.3.0"
+  # MP3 解码（官方 10_mp4_player 示例同款组件）
+  espressif/esp_audio_codec: ">=2.3.0,<2.6.0"
+  espressif/esp_codec_dev: "*"
+  espressif/esp_lcd_st7796: "*"
+  espressif/esp_lcd_touch_ft5x06: "*"
+  espressif/cjson: "*"
